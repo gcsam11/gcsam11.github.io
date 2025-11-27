@@ -1,5 +1,9 @@
 # Individual Assignment 3
 
+In this assignment, a Choropleth map was implemented to represent products sold by country from an [Online Sales Dataset](https://www.kaggle.com/datasets/yusufdelikkaya/online-sales-dataset).
+
+In order to map an interactive hover effect, a [geoJson dataset](https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson) was also required.
+
 ### Hosting and Deployment
 
 This project's source code is available [here](https://github.com/gcsam11/InfoVis_A3).
