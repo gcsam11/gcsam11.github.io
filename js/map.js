@@ -21,7 +21,7 @@ export function drawChoropleth(world) {
     // color scale – red gradient, you can keep custom domain if you want
     const colorScale = d3.scaleSequential()
         .domain([min, max])            // dynamic version
-        .interpolator(d3.interpolateReds);
+        .interpolator(d3.interpolateBlues);
 
     // projection that fits map into SVG
     const projection = d3.geoNaturalEarth1()
@@ -117,7 +117,7 @@ export function drawChoropleth(world) {
         .text(min.toLocaleString());
 
     legend.append("text")
-        .attr("x", legendWidth)
+        .attr("x", legendWidth + 40)
         .attr("y", legendHeight + 15)
         .attr("text-anchor", "end")
         .attr("font-size", 10)
