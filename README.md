@@ -18,7 +18,7 @@ The live visualization can be seen [here](https://gcsam11.github.io/).
 
 If the live visualization is not working, please open this folder in VSCode and run the [LiveServer](https://github.com/ritwickdey/vscode-live-server) plugin.
 
-![visualization](screenshot.png)
+![visualization](screenshot_with_label.png)
 
 ### Disclaimer
 
