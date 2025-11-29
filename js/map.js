@@ -48,10 +48,10 @@ export function drawChoropleth(world) {
             return v ? colorScale(v) : "#eee";
         })
         .attr("opacity", 0)
-    .transition()
+        .transition()
         .duration(1500)
         .attr("opacity", 1)
-    .selection()
+        .selection()
         .on("mouseover", function (event, d) {
             d3.select(this)
                 .attr("stroke", "black")
@@ -86,5 +86,48 @@ export function drawChoropleth(world) {
         });
 
     svg.call(zoom)
-    .on("dblclick.zoom", null); // disable zoom on double click
+        .on("dblclick.zoom", null); // disable zoom on double click
+
+    // Set up legend
+    const legend = svg.append("g")
+        .attr("transform", `translate(20, ${height - 80})`);
+
+    const legendSteps = 6;
+    const legendWidth = 200;
+    const legendHeight = 10;
+
+    const stepValues = d3.range(legendSteps).map(i =>
+        min + (i / (legendSteps - 1)) * (max - min)
+    );
+
+    legend.selectAll("rect")
+        .data(stepValues)
+        .join("rect")
+        .attr("x", (d, i) => i * (legendWidth / (legendSteps - 1)))
+        .attr("y", 0)
+        .attr("width", legendWidth / (legendSteps - 1) + 1)
+        .attr("height", legendHeight)
+        .attr("fill", d => colorScale(d));
+
+    // Label min and max
+    legend.append("text")
+        .attr("x", 0)
+        .attr("y", legendHeight + 15)
+        .attr("font-size", 10)
+        .text(min.toLocaleString());
+
+    legend.append("text")
+        .attr("x", legendWidth)
+        .attr("y", legendHeight + 15)
+        .attr("text-anchor", "end")
+        .attr("font-size", 10)
+        .text(max.toLocaleString());
+
+    // Legend title
+    legend.append("text")
+        .attr("x", 0)
+        .attr("y", -5)
+        .attr("font-size", 12)
+        .attr("font-weight", "bold")
+        .text("Products sold");
 }
